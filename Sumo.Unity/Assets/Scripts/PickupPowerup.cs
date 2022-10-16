@@ -14,15 +14,18 @@ public class PickupPowerup : MonoBehaviour
     {
         var collider = player.GetComponent<SphereCollider>();
         var initialBounciness = collider.material.bounciness;
+        var playerPowerup = player.GetComponent<PlayerPowerup>();
+
         //Increase player bounciness
         collider.material.bounciness = 1.0f;
         //Display visual change
+        playerPowerup.PlayPowerupAnimation();
         //Wait a few seconds
         yield return new WaitForSeconds(powerupDuration);
         //Reset player bounciness
         collider.material.bounciness = initialBounciness;
-        Debug.Log("Bounciness reset");
         //Remove visual change
+        playerPowerup.StopPowerupAnimation();
         yield return null;
     }
 
