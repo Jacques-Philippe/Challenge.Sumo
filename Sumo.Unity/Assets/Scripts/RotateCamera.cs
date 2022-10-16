@@ -7,7 +7,7 @@ public class RotateCamera : MonoBehaviour
     /// <summary>
     /// The speed by which we rotate the camera about the scene's vertical axis
     /// </summary>
-    private float speed = 50;
+    private float speed = 60;
 
     /// <summary>
     /// Rotate the camera clockwise about the scene's vertical axis
