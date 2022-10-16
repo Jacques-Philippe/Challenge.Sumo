@@ -10,11 +10,14 @@ public class GameManager : MonoBehaviour
     public delegate void GameOverListener();
     public GameOverListener OnGameOver;
 
+    private WaveManager waveManager;
+
     private PlayerDeath playerDeath;
 
     private void Awake()
     {
         this.playerDeath = GameObject.FindObjectOfType<PlayerDeath>();
+        this.waveManager = GameObject.FindObjectOfType<WaveManager>();
     }
 
     private void OnEnable()
@@ -25,6 +28,11 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         this.playerDeath.OnPlayerDeath -= EndGame;
+    }
+
+    private void Start()
+    {
+        this.waveManager.StartNextWave();
     }
 
     /// <summary>
@@ -46,12 +54,4 @@ public class GameManager : MonoBehaviour
         //reload the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-    //public void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        this.EndGame();
-    //    }
-    //}
 }

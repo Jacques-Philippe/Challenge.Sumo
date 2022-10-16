@@ -18,7 +18,7 @@ public class EnemyMovementManager : MonoBehaviour
     private void Awake()
     {
         this.playerDeath = GameObject.FindObjectOfType<PlayerDeath>();
-        this.player = playerDeath.gameObject;
+        this.player = GameObject.Find("Player");
 
         this.rigidBody = this.GetComponent<Rigidbody>();
     }
@@ -38,6 +38,11 @@ public class EnemyMovementManager : MonoBehaviour
     private void OnEnable()
     {
         this.playerDeath.OnPlayerDeath += SwitchToCircleArenaMovementScheme;
+    }
+
+    private void OnDisable()
+    {
+        this.playerDeath.OnPlayerDeath -= SwitchToCircleArenaMovementScheme;
     }
 
     private void Update()
