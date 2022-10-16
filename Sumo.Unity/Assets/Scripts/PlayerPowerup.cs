@@ -10,6 +10,8 @@ public class PlayerPowerup : MonoBehaviour
 
     public bool IsPowerupActive = false;
 
+    private float powerupForce = 100;
+
     private void Awake()
     {
         this.animator = this.GetComponent<Animator>();
@@ -32,5 +34,18 @@ public class PlayerPowerup : MonoBehaviour
     public void ApplyPowerup(IEnumerator powerup)
     {
         StartCoroutine(powerup);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        bool otherIsEnemy = collision.gameObject.name.Contains("Enemy");
+        if (otherIsEnemy && this.IsPowerupActive)
+        {
+            var playerPosition = this.transform.position;
+            var enemyPosition = collision.gameObject.transform.position;
+            Vector3 direction = (enemyPosition - playerPosition).normalized;
+            var enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            enemyRigidbody.AddForce(direction * powerupForce, ForceMode.Impulse);
+        }
     }
 }
