@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     /// </summary>
     private GameManager gameManager;
     private RotateCamera rotateCamera;
+    private PlayerMovement playerMovement;
 
     private Action inputScheme;
 
@@ -17,8 +18,10 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
 
+        
         this.gameManager = GameObject.FindObjectOfType<GameManager>();
         this.rotateCamera = GameObject.FindObjectOfType<RotateCamera>();
+        this.playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
     private void Start()
@@ -67,6 +70,13 @@ public class InputManager : MonoBehaviour
         {
             if (horizontalAxis > 0) { rotateCamera.RotateCounterClockwise(); }
             else { rotateCamera.RotateClockwise(); }
+        }
+
+        float verticalAxis = Input.GetAxis("Vertical");
+        if (verticalAxis != 0.0f)
+        {
+            if (verticalAxis > 0) { this.playerMovement.MoveAwayFromCamera(); }
+            else { this.playerMovement.MoveTowardsCamera(); }
         }
     }
 
