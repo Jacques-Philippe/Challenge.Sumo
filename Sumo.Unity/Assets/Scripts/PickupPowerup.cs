@@ -35,8 +35,11 @@ public class PickupPowerup : MonoBehaviour
         if (otherIsPlayer)
         {
             var playerPowerup = other.GetComponent<PlayerPowerup>();
-            playerPowerup.ApplyPowerup(PowerUpEffect(player: other.gameObject));
-            GameObject.Destroy(this.gameObject);
+            if (!playerPowerup.IsPowerupActive)
+            {
+                playerPowerup.ApplyPowerup(PowerUpEffect(player: other.gameObject));
+                GameObject.Destroy(this.gameObject);
+            }
         }
     }
 }

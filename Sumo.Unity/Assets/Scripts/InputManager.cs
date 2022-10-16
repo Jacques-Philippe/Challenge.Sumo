@@ -68,8 +68,8 @@ public class InputManager : MonoBehaviour
         float horizontalAxis = Input.GetAxis("Horizontal");
         if (horizontalAxis != 0.0f)
         {
-            if (horizontalAxis > 0) { rotateCamera.RotateCounterClockwise(); }
-            else { rotateCamera.RotateClockwise(); }
+            if (horizontalAxis > 0) { rotateCamera.RotateClockwise(); }
+            else { rotateCamera.RotateCounterClockwise(); }
         }
 
         float verticalAxis = Input.GetAxis("Vertical");

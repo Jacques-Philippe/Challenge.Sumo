@@ -8,12 +8,14 @@ public class WaveManager : MonoBehaviour
 
     private SpawnManager spawnManager;
     private EnemySpawnManager enemySpawnManager;
+    private PowerupSpawnManager powerupSpawnManager;
     private GameManager gameManager;
 
     private void Awake()
     {
         this.spawnManager = FindObjectOfType<SpawnManager>();
         this.enemySpawnManager = FindObjectOfType<EnemySpawnManager>();
+        this.powerupSpawnManager = FindObjectOfType<PowerupSpawnManager>();
         this.gameManager = FindObjectOfType<GameManager>();
     }
 
@@ -35,6 +37,7 @@ public class WaveManager : MonoBehaviour
 
             Debug.Log($"Starting wave {waveNumber}");
             this.spawnManager.SpawnWaveContents(waveNumber: this.waveNumber);
+            this.powerupSpawnManager.SpawnPowerup();
         }
     }
 }

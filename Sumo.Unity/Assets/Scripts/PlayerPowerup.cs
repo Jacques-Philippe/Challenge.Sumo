@@ -8,6 +8,8 @@ public class PlayerPowerup : MonoBehaviour
     private GameObject powerupActiveDisplay;
     private Animator animator;
 
+    public bool IsPowerupActive = false;
+
     private void Awake()
     {
         this.animator = this.GetComponent<Animator>();
@@ -15,12 +17,14 @@ public class PlayerPowerup : MonoBehaviour
 
     public void PlayPowerupAnimation()
     {
+        this.IsPowerupActive = true;
         this.powerupActiveDisplay.SetActive(true);
         animator.SetBool("isActive_b", true);
     }
 
     public void StopPowerupAnimation()
     {
+        this.IsPowerupActive = false;
         animator.SetBool("isActive_b", false);
         this.powerupActiveDisplay.SetActive(false);
     }
