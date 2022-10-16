@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6752351406270361619}
   - component: {fileID: 1902633720}
   - component: {fileID: 1902633721}
+  - component: {fileID: 1902633722}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -94,7 +95,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6752351406270361622}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f76aa78d49a3b6645981488b3539a957, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -139,5 +140,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05a1f06402b4d68468abdbbac0b9dfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1902633722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6752351406270361622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec0e944694d9a847bf61651c7e7869b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
