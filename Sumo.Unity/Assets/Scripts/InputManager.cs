@@ -57,10 +57,10 @@ public class InputManager : MonoBehaviour
 
     void GameOverInputScheme()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    this.gameManager.ResetGame();
-        //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            this.gameManager.ResetGame();
+        }
     }
 
     void GameInputScheme()

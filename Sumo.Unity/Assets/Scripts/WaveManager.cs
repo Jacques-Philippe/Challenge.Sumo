@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    public delegate void OnWaveStartedEvent();
+    public OnWaveStartedEvent OnWaveStarted;
+
     public int waveNumber { get; private set; } = 0;
 
     private SpawnManager spawnManager;
@@ -38,6 +41,8 @@ public class WaveManager : MonoBehaviour
             Debug.Log($"Starting wave {waveNumber}");
             this.spawnManager.SpawnWaveContents(waveNumber: this.waveNumber);
             this.powerupSpawnManager.SpawnPowerup();
+
+            this.OnWaveStarted.Invoke();
         }
     }
 }
