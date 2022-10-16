@@ -8,6 +8,10 @@ public class EnemyMovementManager : MonoBehaviour
 {
     private PlayerDeath playerDeath;
     private GameObject player;
+    /// <summary>
+    /// The arena
+    /// </summary>
+    private GameObject island;
 
     private Rigidbody rigidBody;
 
@@ -15,12 +19,15 @@ public class EnemyMovementManager : MonoBehaviour
 
     public float speed;
 
+    private float maximumDistanceFromCentre = 7.0f;
+
     private void Awake()
     {
         this.playerDeath = GameObject.FindObjectOfType<PlayerDeath>();
         this.player = GameObject.Find("Player");
 
         this.rigidBody = this.GetComponent<Rigidbody>();
+        this.island = GameObject.Find("Island");
     }
 
     private void Start()
@@ -65,6 +72,17 @@ public class EnemyMovementManager : MonoBehaviour
 
     void CircleArena()
     {
-        Debug.Log("Circling arena");
+        Vector3 toIslandCenter = this.island.transform.position - this.transform.position;
+        Vector3 right = Vector3.Cross(lhs: Vector3.up, rhs: toIslandCenter);
+        bool isTooFarFromCentre = toIslandCenter.magnitude > this.maximumDistanceFromCentre;
+        if (isTooFarFromCentre)
+        {
+            this.rigidBody.AddForce(toIslandCenter.normalized * speed * Time.deltaTime, ForceMode.Impulse);
+        }
+        else
+        {
+            this.rigidBody.AddForce((2 * toIslandCenter + right).normalized * speed * Time.deltaTime, ForceMode.Impulse);
+        }
+
     }
 }
