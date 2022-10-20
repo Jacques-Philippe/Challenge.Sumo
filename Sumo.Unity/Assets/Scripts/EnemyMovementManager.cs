@@ -44,12 +44,18 @@ public class EnemyMovementManager : MonoBehaviour
 
     private void OnEnable()
     {
-        this.playerDeath.OnPlayerDeath += SwitchToCircleArenaMovementScheme;
+        if (this.playerDeath != null)
+        {
+            this.playerDeath.OnPlayerDeath += SwitchToCircleArenaMovementScheme;
+        }
     }
 
     private void OnDisable()
     {
-        this.playerDeath.OnPlayerDeath -= SwitchToCircleArenaMovementScheme;
+        if (this.playerDeath != null)
+        {
+            this.playerDeath.OnPlayerDeath -= SwitchToCircleArenaMovementScheme;
+        }
     }
 
     private void Update()
@@ -64,6 +70,10 @@ public class EnemyMovementManager : MonoBehaviour
 
     void MoveTowardsPlayer()
     {
+        if (player == null)
+        {
+            SwitchToCircleArenaMovementScheme();
+        }
         Vector3 playerPosition = this.player.transform.position;
         Vector3 direction = playerPosition - this.transform.position;
 
