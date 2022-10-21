@@ -187,3 +187,7 @@ Press space to restart
 ## Figma project
 
 [Here](https://www.figma.com/file/pvXXOwcG5uoVaGlIcU87Ds/Challenge.Sumo?node-id=1%3A5)
+
+## Hosted project
+
+[Here](https://play.unity.com/mg/other/webgl-builds-261767)
