@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     public void MoveAwayFromCamera()
     {
         var direction = GetDirectionAwayFromCameraInXZPlane();
-        this.rigidBody.AddForce(direction.normalized * speed * Time.deltaTime, ForceMode.Impulse);
+        this.rigidBody.AddForce(direction.normalized * speed * Time.deltaTime, ForceMode.VelocityChange);
     }
 
     /// <summary>
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     public void MoveTowardsCamera()
     {
         var direction = GetDirectionAwayFromCameraInXZPlane();
-        this.rigidBody.AddForce(-direction.normalized * speed * Time.deltaTime, ForceMode.Impulse);
+        this.rigidBody.AddForce(-direction.normalized * speed * Time.deltaTime, ForceMode.VelocityChange);
     }
 
     /// <summary>
